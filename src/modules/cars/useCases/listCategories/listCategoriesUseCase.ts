@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 import { inject, injectable } from "tsyringe";
-import { Category } from "../../entities/Category";
+import { Category } from "../../infra/typeorm/entities/Category";
 import { ICategoriesRepository } from "../../Repositories/ICategoriesRepository";
 
 @injectable()

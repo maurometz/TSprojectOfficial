@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { Router } from "express";
-import { AuthenticateUserController } from "../modules/accounts/authenticateUser/AuthenticateUserController";
+import { AuthenticateUserController } from "../../../../modules/accounts/authenticateUser/AuthenticateUserController";
 
 const authenticateRoutes = Router();
 

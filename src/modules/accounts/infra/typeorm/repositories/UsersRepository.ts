@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 /* eslint-disable import/prefer-default-export */
 import { getRepository, Repository } from "typeorm";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
-import { IUsersRepository } from "../IUsersRepository";
+import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
+import { User } from "../entities/User";
+import { IUsersRepository } from "../../../repositories/IUsersRepository";
 
 class UserRepository implements IUsersRepository {
   private repository: Repository<User>;
@@ -19,6 +19,7 @@ class UserRepository implements IUsersRepository {
     password,
     avatar,
     id,
+    isAdmin,
   }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
       name,
@@ -27,6 +28,7 @@ class UserRepository implements IUsersRepository {
       password,
       avatar,
       id,
+      isAdmin,
     });
 
     await this.repository.save(user);

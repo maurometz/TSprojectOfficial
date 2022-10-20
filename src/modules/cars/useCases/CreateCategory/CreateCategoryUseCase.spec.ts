@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "../../../../shared/errors/AppError";
 import { CategoriesRepositoryInMemory } from "../../Repositories/in-memory/CategoriesRepositoryInMemory";
 import { CreateCategoryUseCase } from "./CreateCategoryUseService";
 

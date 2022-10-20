@@ -1,11 +1,11 @@
 /* eslint-disable no-useless-constructor */
 import { inject, injectable } from "tsyringe";
-import { CategoriesRepository } from "../../Repositories/implementations/CategoriesRepository";
+import { CategoriesRepository } from "../../infra/typeorm/repositories/CategoriesRepository";
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from "../../Repositories/ICategoriesRepository";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "../../../../shared/errors/AppError";
 
 interface IRequest {
   name: string;

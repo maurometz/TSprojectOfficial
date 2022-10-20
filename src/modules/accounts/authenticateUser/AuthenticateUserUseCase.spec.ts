@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { AppError } from "../../../errors/AppError";
+import { AppError } from "../../../shared/errors/AppError";
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
-import { User } from "../entities/User";
+import { User } from "../infra/typeorm/entities/User";
 import { UsersRepositoryInMemory } from "../repositories/in-memory/UsersRepositoryInMemory";
 import { CreateUserUseCase } from "../useCases/createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
@@ -25,6 +25,7 @@ describe("Authenticate User", () => {
       email: "email@email.com",
       password: "1234",
       name: "nmoe creativ",
+      isAdmin: false,
     };
     await createUserUseCase.execute(user);
 
@@ -52,6 +53,7 @@ describe("Authenticate User", () => {
         email: "user@user.com",
         password: "1234",
         name: "user test error",
+        isAdmin: false,
       };
 
       await createUserUseCase.execute(user);
