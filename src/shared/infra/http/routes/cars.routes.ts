@@ -1,6 +1,7 @@
 /* eslint-disable import/no-useless-path-segments */
 /* eslint-disable import/prefer-default-export */
 import { Router } from "express";
+import { CreateCarSpecificationController } from "../../../../modules/cars/useCases/createCarSpecification/CreateCarSpecificationController";
 import { ListAvailableCarsController } from "../../../../modules/cars/useCases/listAvailableCars/listAvailableCarsController";
 import { CreateCarController } from "../../../../../src/modules/cars/useCases/createCar/CreateCarController";
 import { ensureAdmin } from "../middlewares/ensureAdmin";
@@ -10,6 +11,7 @@ const carsRoutes = Router();
 
 const createCarController = new CreateCarController();
 const listAvailableCarsController = new ListAvailableCarsController();
+const createCarSpecificationController = new CreateCarSpecificationController();
 
 carsRoutes.post(
   "/",
@@ -19,5 +21,12 @@ carsRoutes.post(
 );
 
 carsRoutes.get("/available", listAvailableCarsController.handle);
+
+carsRoutes.post(
+  "/specifications/:id",
+  // ensureAuthenticated,
+  // ensureAdmin,
+  createCarSpecificationController.handle,
+);
 
 export { carsRoutes };

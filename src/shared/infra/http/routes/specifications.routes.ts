@@ -11,8 +11,8 @@ const createSpecificationController = new CreateSpecificationController();
 
 specificationRoutes.post(
   "/",
-  ensureAuthenticated,
-  ensureAdmin,
+  // ensureAuthenticated,
+  // ensureAdmin,
   createSpecificationController.handle,
 );
 
