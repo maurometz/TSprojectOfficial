@@ -4,7 +4,10 @@
 /* eslint-disable camelcase */
 /* eslint-disable import/prefer-default-export */
 
+import { inject, injectable } from "tsyringe";
+import { IDateProvider } from "../../../../shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "../../../../shared/errors/AppError";
+import { Rental } from "../../infra/typeorm/entities/rental";
 import { IRentalsRepository } from "../../repositories/IRentalsRepository";
 
 interface IRequest {
@@ -13,14 +16,22 @@ interface IRequest {
   expected_return_date: Date;
 }
 
+@injectable()
 class CreateRentalUseCase {
-  constructor(private rentalsRepository: IRentalsRepository) {}
+  constructor(
+    @inject("RentalsRepository")
+    private rentalsRepository: IRentalsRepository,
+    @inject("DayjsDateProvider")
+    private dateProvider: IDateProvider,
+  ) {}
 
   async execute({
     user_id,
     car_id,
     expected_return_date,
-  }: IRequest): Promise<void> {
+  }: IRequest): Promise<Rental> {
+    const minimumHour = 24;
+
     const rentalOpenToUser = await this.rentalsRepository.findOpenRentalByCar(
       car_id,
     );
@@ -32,6 +43,24 @@ class CreateRentalUseCase {
     if (rentalOpenToUser) {
       throw new AppError("there's a rental already open");
     }
+
+    const dateNow = this.dateProvider.dateNow();
+    const compare = this.dateProvider.compareInHours(
+      dateNow,
+      expected_return_date,
+    );
+
+    if (compare < minimumHour) {
+      throw new AppError("invalid return time!");
+    }
+
+    const rental = await this.rentalsRepository.create({
+      user_id,
+      car_id,
+      expected_return_date,
+    });
+
+    return rental;
   }
 }
 
