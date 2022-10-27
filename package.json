@@ -7,7 +7,7 @@
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "tsc": "tsc",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "test": "jest",
+    "test": "jest --detectOpenHandles --runInBand",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {

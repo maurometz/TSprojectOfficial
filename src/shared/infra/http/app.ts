@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-shadow */
 import "reflect-metadata";
@@ -33,4 +34,4 @@ app.use(
   },
 );
 
-app.listen(3334, () => console.log("server is running"));
+export { app };

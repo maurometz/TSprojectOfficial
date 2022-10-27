@@ -22,7 +22,7 @@ const listCategoriesController = new ListCategoriesController();
 CategoriesRoutes.post(
   "/",
   ensureAuthenticated,
-  ensureAdmin,
+  // ensureAdmin,
   createCategoryController.handle,
 );
 
@@ -32,7 +32,7 @@ CategoriesRoutes.get("/", listCategoriesController.handle);
 CategoriesRoutes.post(
   "/import",
   ensureAuthenticated,
-  ensureAdmin,
+  // ensureAdmin,
   upload.single("file"),
   importCategoryController.handle,
 );
