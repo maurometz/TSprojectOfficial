@@ -1,5 +1,7 @@
 /* eslint-disable import/no-useless-path-segments */
 import { container } from "tsyringe";
+import { IUsersTokensRepository } from "../../modules/accounts/repositories/IUsersTokensRepository";
+import { UsersTokensRepository } from "../../modules/accounts/infra/typeorm/repositories/UsersTokensRepository";
 import { RentalsRepository } from "../../modules/rentals/infra/typeorm/repositories/RentalsRepository";
 import { IRentalsRepository } from "../../modules/rentals/repositories/IRentalsRepository";
 import { ICarsImagesRepository } from "../../modules/cars/Repositories/in-memory/ICarsImagesRepository";
@@ -39,4 +41,9 @@ container.registerSingleton<ICarsImagesRepository>(
 container.registerSingleton<IRentalsRepository>(
   "RentalsRepository",
   RentalsRepository,
+);
+
+container.registerSingleton<IUsersTokensRepository>(
+  "UsersTokensRepository",
+  UsersTokensRepository,
 );

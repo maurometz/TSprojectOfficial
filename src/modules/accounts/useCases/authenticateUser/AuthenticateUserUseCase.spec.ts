@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { DayjsDateProvider } from "src/shared/container/providers/DateProvider/implementations/DayjsDateProvider";
-import { AppError } from "../../../shared/errors/AppError";
-import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
-import { User } from "../infra/typeorm/entities/User";
-import { UsersRepositoryInMemory } from "../repositories/in-memory/UsersRepositoryInMemory";
-import { CreateUserUseCase } from "../useCases/createUser/CreateUserUseCase";
+import { AppError } from "../../../../shared/errors/AppError";
+import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
+import { User } from "../../infra/typeorm/entities/User";
+import { UsersRepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory";
+import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
