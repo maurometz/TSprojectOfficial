@@ -7,11 +7,12 @@
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "tsc": "tsc",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "test": "jest --detectOpenHandles --runInBand",
+    "test": "jest --detectOpenHandles --runInBand --passWithNoTests",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
     "@types/nodemailer": "^6.4.6",
+    "@types/supertest": "^2.0.12",
     "bcrypt": "5.1.0",
     "csv-parse": "5.3.0",
     "dayjs": "^1.11.6",
@@ -23,6 +24,7 @@
     "nodemailer": "^6.8.0",
     "pg": "8.8.0",
     "reflect-metadata": "0.1.13",
+    "supertest": "^6.3.1",
     "swagger-ui-express": "4.5.0",
     "tsyringe": "4.7.0",
     "typeorm": "0.2.45",
